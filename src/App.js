@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import StarRating from "./components/StarRating";
+import Dialog from "./components/Dialog";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [isDialogVisible, setDialogVisible] = useState(false);
+
+    return (
+        <>
+            <main>
+                <StarRating />
+            </main>
+            <Dialog isVisible={isDialogVisible} closeHandler={setDialogVisible} />
+            <button 
+                id="dialog-toggle-btn" 
+                onClick={() => setDialogVisible(!isDialogVisible)}
+            >{isDialogVisible ? "Hide Dialog" : "Show Dialog"}</button>
+        </>
+    );
 }
 
 export default App;
